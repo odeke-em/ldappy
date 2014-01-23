@@ -5,7 +5,13 @@
 # by the University of Alberta, and affiliates
 
 import re
+import sys
+import ldap
+
 import constants # Local module
+
+pyVersion = sys.hexversion/(1<<24)
+stdinReader = raw_input if pyVersion < 3 else input
 
 # CCID -- Campus Computing ID. Criteria for a valid ccid
 #    ->Must consist entirely of alphanumeric characters
@@ -13,29 +19,11 @@ import constants # Local module
 CCID_REGEX = "^([a-z0-9]{1,7})$"
 ccidCompile = re.compile(CCID_REGEX,re.IGNORECASE|re.UNICODE)
 
-def emailValid(queryEmail):
-  # Input: A potential email string
-  # Returns: 0 on success, else the error description
-
-  return False
-
 def ccidValid(queryCCID):
   print("Validating ", queryCCID)
   # Arg: A ccid string to be validated
   # Returns: True if queryCCID passes the validation criteria
   return (queryCCID and ccidCompile.search(queryCCID))
-
-def nonSerializable(obj):
-  # Input: An arbitrary Python object
-  # An object is serializable only iff an iterator can be created from it.
-  # Returns True iff an object is non serializable, else False
-  # print("OBJ ",obj)
-  try:
-    iterator = iter(obj)
-  except TypeError:
-    return True 
-  else: 
-    return False 
 
 def credentialsBind(ccid, password):
   # Args: ccid, password. Both non-empty strings
@@ -63,3 +51,12 @@ def credentialsBind(ccid, password):
     # An unhandled exception occured here, implement handling later
     return False
   else:  return True
+
+def main():
+  ccid = stdinReader("\033[93mCCID: \033[00m")
+  password = stdinReader("\033[94mPassword: \033[00m") 
+  # !!!Use actual tty settings to turn off character echoing!!!
+
+  print(credentialsBind(ccid, password))
+if __name__ == '__main__':
+  main()

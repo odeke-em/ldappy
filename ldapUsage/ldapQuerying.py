@@ -3,6 +3,7 @@
 # Author: Emmanuel Odeke <odeke@ualberta.ca>
 # Utility to aid you in looking up information about
 # a user logged from an LDAP tree
+import ldap
 import copy
 import constants # Local module
 
@@ -48,7 +49,6 @@ def getLDAPInfo(searchParamDict):
   if not (isinstance(searchParamDict, dict) and searchKeyWord): return resultsDict
 
   print("srPD ", searchParamDict)
-  import ldap
   ldap.set_option(ldap.OPT_X_TLS_REQUIRE_CERT, False)
   uofa_ldapObject = ldap.initialize(constants.UOFA_LDAP_URI)
   defaultQueryParams = [constants.LDAP_SURNAME_KEY, constants.LDAP_PHONE_KEY, 
