@@ -1,0 +1,2 @@
+emmanuel [Wed Jan 22 21:37:57 2014]
+Utility to log notes here
