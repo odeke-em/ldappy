@@ -3,8 +3,19 @@
 # Author: Emmanuel Odeke <odeke@ualberta.ca>
 # Utility to aid you in looking up information about
 # a user logged from an LDAP tree
-
+import copy
 import constants # Local module
+
+# Helper function
+def mergeDicts(toDict, fromDict):
+  #Copy items from 'fromDict' to 'toDict'
+  if not (isinstance(fromDict, dict) and isinstance(toDict,dict)):
+    return None
+
+  for key in fromDict:
+    keyCopy = copy.copy(key)
+    valueCopy = copy.copy(fromDict[key])
+    toDict[keyCopy] = valueCopy
 
 def getLDAPInfo(searchParamDict):
   # Return results of a query on an ldap directory, given queryParameters 
@@ -70,3 +81,17 @@ def getLDAPInfo(searchParamDict):
     resultsDict[constants.DATA_KEY] =mergedDict 
 
   return resultsDict
+
+def main():
+  results = getLDAPInfo(
+    {
+      constants.SEARCH_KEYWORD_KEY:'(uid=*klindenb)', 
+      constants.SEARCH_FILTERS_KEY:[constants.LDAP_EMAIL_KEY, 
+    constants.LDAP_PHONE_KEY]
+    }
+  )
+
+  print(results)
+
+if __name__ == '__main__':
+  main()

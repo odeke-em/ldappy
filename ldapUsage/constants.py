@@ -38,6 +38,7 @@ THRESHOLD_TIME_LAPSE = 20
 #JSON return form keys
 META_KEY = "meta"
 DATA_KEY = "data"
+COUNT_KEY = "count"
 
 #Sort keys
 NUMERICAL_DIV_ATTR = "__div__" #All number like objects accept division
