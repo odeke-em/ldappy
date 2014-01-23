@@ -72,7 +72,7 @@ def getLDAPInfo(searchParamDict):
     )
   except Exception:
     #An unhandled exception occured here, implement handling later
-    print(e)
+    print("Exception here")
   else:  
     metaDict[constants.SUCCESS_STATUS_KEY] = True
     resultsLen = len(searchResults)
@@ -89,8 +89,9 @@ def main():
   results = getLDAPInfo(
     {
       constants.SEARCH_KEYWORD_KEY:'(uid=*klindenb)', 
-      constants.SEARCH_FILTERS_KEY:[constants.LDAP_EMAIL_KEY, 
-    constants.LDAP_PHONE_KEY]
+      constants.SEARCH_FILTERS_KEY : [
+        constants.LDAP_EMAIL_KEY, constants.LDAP_PHONE_KEY
+      ]
     }
   )
 
