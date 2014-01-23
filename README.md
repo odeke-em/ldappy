@@ -1,7 +1,10 @@
 
 
+LDAP Usage
+==========
 
-KL\_EO Snippet Ground
-=========================
-
-Please find the snippets below
+Requirements:
+====================
+  + Python X.Y where X >= 2
+  + LDAP => Install that by pip install python-ldap or easy\_install
+         => Even better, Google for how-to install LDAP

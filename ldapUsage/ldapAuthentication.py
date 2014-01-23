@@ -15,7 +15,7 @@ stdinReader = raw_input if pyVersion < 3 else input
 
 # CCID -- Campus Computing ID. Criteria for a valid ccid
 #    ->Must consist entirely of alphanumeric characters
-#    ->Max length: 7 characters
+#    ->Max length: 9 characters arbitrarily
 CCID_REGEX = "^([a-z0-9]{1,9})$"
 ccidCompile = re.compile(CCID_REGEX,re.IGNORECASE|re.UNICODE)
 
