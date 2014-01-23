@@ -1,2 +1,4 @@
 emmanuel [Wed Jan 22 21:37:57 2014]
 Utility to log notes here
+emmanuel [Wed Jan 22 22:22:02 2014]
+Once you are ready to deploy and have made your certficate signed and recognized by the UofA, modify ldap[Querying, Authentication].py setting all usages of ldap.set_option(ldap.OPT_X_TLS_REQUIRE_CERT, False) to ldap.set_option(ldap.OPT_X_TLS_REQUIRE_CERT, True)

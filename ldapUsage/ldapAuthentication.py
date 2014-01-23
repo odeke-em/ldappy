@@ -36,6 +36,8 @@ def credentialsBind(ccid, password):
     print("invalid ccid")
     return False
 
+  # !!! Once you are ready to deploy and have made your certificate signed
+  #  and recognized by the UOFA, set the last argument to True !!
   ldap.set_option(ldap.OPT_X_TLS_REQUIRE_CERT, False)
   uofa_ldapObject = ldap.initialize(constants.UOFA_LDAP_URI)
 
