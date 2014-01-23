@@ -47,9 +47,9 @@ def credentialsBind(ccid, password):
 
   try:
     uofa_ldapObject.bind_s(LOGIN_DN, password)
-  except ldap.INVALID_CREDENTIALS, e: # Failed to authenticate
+  except ldap.INVALID_CREDENTIALS: # Failed to authenticate
     return False
-  except Exception, e:
+  except Exception:
     # An unhandled exception occured here, implement handling later
     return False
   else:  return True

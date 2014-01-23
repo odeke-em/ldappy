@@ -70,7 +70,7 @@ def getLDAPInfo(searchParamDict):
     searchResults = uofa_ldapObject.search_s(
      constants.UALBERTA_PEOPLE_TREE_SEARCH, ldap.SCOPE_SUBTREE,searchKeyWord,searchFilters
     )
-  except Exception, e:
+  except Exception:
     #An unhandled exception occured here, implement handling later
     print(e)
   else:  
