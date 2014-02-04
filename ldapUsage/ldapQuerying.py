@@ -78,17 +78,14 @@ def getLDAPInfo(searchParamDict):
     resultsLen = len(searchResults)
     metaDict[constants.COUNT_KEY] = resultsLen
     dataArray = map(lambda tup: tup[1], searchResults)
-    mergedDict = dict() 
-    for eachDict in dataArray:
-      mergeDicts(mergedDict, eachDict)
-    resultsDict[constants.DATA_KEY] =mergedDict 
+    resultsDict[constants.DATA_KEY] =  dataArray
 
   return resultsDict
 
 def main():
   results = getLDAPInfo(
     {
-      constants.SEARCH_KEYWORD_KEY:'(uid=*klindenb)', 
+      constants.SEARCH_KEYWORD_KEY:'(uid=*klind*)', 
       constants.SEARCH_FILTERS_KEY : [
         constants.LDAP_EMAIL_KEY, constants.LDAP_PHONE_KEY
       ]
